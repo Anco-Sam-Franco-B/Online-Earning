@@ -1,34 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta
-    name="description"
-    content="Earnly Demo - fictional online earning simulator for UI/UX practice."
+  <title>Earnly — Demo Earning Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
   >
-
-  <title>Earnly Demo — Online Earning Simulator</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- SAFETY NOTICE -->
+  <!-- ================================
+       DEMO WARNING
+  ================================= -->
   <div class="demo-banner">
-    <strong>DEMO / SIMULATION</strong>
-    <span>No real money, payments, or credentials are processed.</span>
+    <div>
+      <strong>DEMO / SIMULATION</strong>
+      <span>
+        This website is fictional. No real money, payments, bank accounts,
+        mobile money, or financial transactions are processed.
+      </span>
+    </div>
   </div>
 
-  <div class="app-shell">
+  <!-- ================================
+       AUTH SCREEN
+  ================================= -->
+  <section id="authScreen" class="auth-screen">
+
+    <div class="auth-container">
+
+      <div class="auth-brand">
+        <div class="brand-icon">E</div>
+
+        <div>
+          <h1>Earnly</h1>
+          <p>Demo earning platform</p>
+        </div>
+      </div>
+
+      <div class="auth-card">
+
+        <div class="auth-header">
+          <span class="eyebrow">DEMO ACCOUNT</span>
+          <h2 id="authTitle">Welcome back</h2>
+          <p id="authSubtitle">
+            Login to continue your simulated earning journey.
+          </p>
+        </div>
+
+        <!-- LOGIN -->
+        <form id="loginForm" class="auth-form">
+
+          <label>
+            Email
+            <input
+              id="loginEmail"
+              type="email"
+              placeholder="demo@example.com"
+              required
+            >
+          </label>
+
+          <label>
+            Password
+            <input
+              id="loginPassword"
+              type="password"
+              placeholder="Enter demo password"
+              required
+            >
+          </label>
+
+          <button class="primary-btn full-btn" type="submit">
+            Login to Demo
+          </button>
+
+          <p class="auth-switch">
+            Don't have a demo account?
+            <button type="button" id="showSignup">
+              Create account
+            </button>
+          </p>
+
+        </form>
+
+        <!-- SIGNUP -->
+        <form id="signupForm" class="auth-form hidden">
+
+          <label>
+            Full name
+            <input
+              id="signupName"
+              type="text"
+              placeholder="Your demo name"
+              required
+            >
+          </label>
+
+          <label>
+            Email
+            <input
+              id="signupEmail"
+              type="email"
+              placeholder="you@example.com"
+              required
+            >
+          </label>
+
+          <label>
+            Password
+            <input
+              id="signupPassword"
+              type="password"
+              placeholder="Create demo password"
+              minlength="4"
+              required
+            >
+          </label>
+
+          <label>
+            Confirm password
+            <input
+              id="signupConfirm"
+              type="password"
+              placeholder="Confirm password"
+              minlength="4"
+              required
+            >
+          </label>
+
+          <button class="primary-btn full-btn" type="submit">
+            Create Demo Account
+          </button>
+
+          <p class="auth-switch">
+            Already have an account?
+            <button type="button" id="showLogin">
+              Login
+            </button>
+          </p>
+
+        </form>
+
+        <div class="demo-auth-note">
+          <strong>Demo only</strong>
+          <span>
+            Do not enter real passwords, payment details, bank information,
+            or mobile-money credentials.
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================
+       APP
+  ================================= -->
+  <div id="app" class="app hidden">
 
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
 
-      <div class="brand">
-        <div class="brand-mark">E</div>
+      <div class="sidebar-brand">
+        <div class="brand-icon">E</div>
 
         <div>
           <strong>Earnly</strong>
@@ -36,7 +180,7 @@
         </div>
       </div>
 
-      <nav class="nav">
+      <nav class="sidebar-nav">
 
         <button class="nav-item active" data-page="dashboard">
           <span>⌂</span>
@@ -54,665 +198,500 @@
         </button>
 
         <button class="nav-item" data-page="transactions">
-          <span>▣</span>
+          <span>↔</span>
           Transactions
         </button>
 
         <button class="nav-item" data-page="withdraw">
-          <span>↘</span>
+          <span>↓</span>
           Withdraw
         </button>
 
       </nav>
 
-      <div class="sidebar-card">
+      <div class="sidebar-bottom">
 
-        <span class="pill">SAFE DEMO</span>
+        <div class="user-mini">
+          <div class="avatar" id="sidebarAvatar">D</div>
 
-        <h3>Practice mode</h3>
+          <div>
+            <strong id="sidebarName">Demo User</strong>
+            <small id="sidebarEmail">demo@example.com</small>
+          </div>
+        </div>
 
-        <p>
-          All balances and transactions are fictional and stored only
-          in this browser.
-        </p>
+        <button id="logoutBtn" class="logout-btn">
+          Logout
+        </button>
 
       </div>
 
     </aside>
 
-
     <!-- MAIN -->
-    <main class="main">
+    <main class="main-content">
 
-      <!-- TOP BAR -->
+      <!-- TOP NAV -->
       <header class="topbar">
 
-        <button
-          class="icon-btn menu-btn"
-          id="menuBtn"
-          aria-label="Open menu"
-        >
+        <button id="menuBtn" class="menu-btn">
           ☰
         </button>
 
         <div>
-
-          <p class="eyebrow">
-            ONLINE EARNING SIMULATOR
-          </p>
-
-          <h1 id="pageTitle">
-            Dashboard
-          </h1>
-
+          <span class="topbar-label">DEMO DASHBOARD</span>
+          <h2 id="pageTitle">Dashboard</h2>
         </div>
 
-        <div class="top-actions">
+        <div class="topbar-right">
 
-          <button
-            class="icon-btn"
-            id="resetBtn"
-            title="Reset demo data"
-          >
-            ↻
-          </button>
-
-          <div class="avatar">
-            SF
+          <div class="demo-user-pill">
+            <div class="avatar small" id="topAvatar">D</div>
+            <span id="topUserName">Demo User</span>
           </div>
 
         </div>
 
       </header>
 
+      <!-- ================================
+           DASHBOARD
+      ================================= -->
+      <section id="dashboardPage" class="page active-page">
 
-      <!-- CONTENT -->
-      <div class="content">
+        <div class="hero">
 
-        <!-- DASHBOARD -->
-        <section
-          class="page active"
-          id="dashboard"
-        >
+          <div>
+            <span class="eyebrow">SIMULATED EARNINGS</span>
 
-          <div class="hero">
+            <h1>
+              Build your simulated
+              <span>earning journey.</span>
+            </h1>
 
+            <p>
+              Complete fictional tasks, invite demo users and explore
+              how an earning dashboard could work.
+            </p>
+
+            <div class="hero-actions">
+              <button class="primary-btn" data-page-link="tasks">
+                Explore Tasks
+              </button>
+
+              <button class="secondary-btn" data-page-link="withdraw">
+                View Demo Wallet
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-balance">
+            <span>Demo Balance</span>
+            <strong id="heroBalance">$0.00</strong>
+            <small>Simulated value only</small>
+          </div>
+
+        </div>
+
+        <!-- STATS -->
+        <div class="stats-grid">
+
+          <article class="stat-card">
+            <span class="stat-icon">💰</span>
             <div>
-
-              <span class="pill">
-                DEMO ACCOUNT
-              </span>
-
-              <h2>
-                Build your simulated earning journey.
-              </h2>
-
-              <p>
-                Complete fictional tasks, track your demo balance,
-                and explore the dashboard experience.
-              </p>
-
-              <button
-                class="primary-btn"
-                data-go="tasks"
-              >
-                Explore Tasks →
-              </button>
-
+              <small>Demo Balance</small>
+              <strong id="balanceStat">$0.00</strong>
             </div>
-
-            <div class="hero-orb">
-              <span>$</span>
-            </div>
-
-          </div>
-
-
-          <!-- STAT CARDS -->
-          <div class="stats-grid">
-
-            <article class="stat-card">
-
-              <div class="stat-icon">
-                ◈
-              </div>
-
-              <span>
-                Demo Balance
-              </span>
-
-              <strong id="balance">
-                $0.00
-              </strong>
-
-              <small>
-                Fictional balance
-              </small>
-
-            </article>
-
-
-            <article class="stat-card">
-
-              <div class="stat-icon">
-                ✓
-              </div>
-
-              <span>
-                Tasks Completed
-              </span>
-
-              <strong id="completedTasks">
-                0
-              </strong>
-
-              <small>
-                This session
-              </small>
-
-            </article>
-
-
-            <article class="stat-card">
-
-              <div class="stat-icon">
-                ↗
-              </div>
-
-              <span>
-                Referrals
-              </span>
-
-              <strong id="referralCount">
-                0
-              </strong>
-
-              <small>
-                Demo referrals
-              </small>
-
-            </article>
-
-
-            <article class="stat-card">
-
-              <div class="stat-icon">
-                ★
-              </div>
-
-              <span>
-                Activity Streak
-              </span>
-
-              <strong id="streak">
-                1 day
-              </strong>
-
-              <small>
-                Simulation metric
-              </small>
-
-            </article>
-
-          </div>
-
-
-          <!-- DASHBOARD PANELS -->
-          <div class="section-grid">
-
-            <article class="panel">
-
-              <div class="panel-head">
-
-                <div>
-
-                  <span class="section-label">
-                    QUICK ACTIONS
-                  </span>
-
-                  <h3>
-                    What would you like to do?
-                  </h3>
-
-                </div>
-
-              </div>
-
-
-              <div class="action-grid">
-
-                <button
-                  class="action-card"
-                  data-go="tasks"
-                >
-
-                  <span>✓</span>
-
-                  <b>
-                    Complete a task
-                  </b>
-
-                  <small>
-                    Earn simulated rewards
-                  </small>
-
-                </button>
-
-
-                <button
-                  class="action-card"
-                  data-go="referrals"
-                >
-
-                  <span>↗</span>
-
-                  <b>
-                    View referrals
-                  </b>
-
-                  <small>
-                    See your fictional network
-                  </small>
-
-                </button>
-
-
-                <button
-                  class="action-card"
-                  data-go="withdraw"
-                >
-
-                  <span>↘</span>
-
-                  <b>
-                    Try withdrawal
-                  </b>
-
-                  <small>
-                    Demo flow only
-                  </small>
-
-                </button>
-
-              </div>
-
-            </article>
-
-
-            <article class="panel">
-
-              <div class="panel-head">
-
-                <div>
-
-                  <span class="section-label">
-                    RECENT ACTIVITY
-                  </span>
-
-                  <h3>
-                    Latest transactions
-                  </h3>
-
-                </div>
-
-                <button
-                  class="text-btn"
-                  data-go="transactions"
-                >
-                  View all
-                </button>
-
-              </div>
-
-              <div
-                id="recentActivity"
-                class="activity-list"
-              ></div>
-
-            </article>
-
-          </div>
-
-        </section>
-
-
-        <!-- TASKS -->
-        <section
-          class="page"
-          id="tasks"
-        >
-
-          <div class="page-intro">
-
-            <span class="pill">
-              SIMULATED TASKS
-            </span>
-
-            <h2>
-              Complete fictional tasks
-            </h2>
-
-            <p>
-              Rewards are generated only for this UI demonstration.
-            </p>
-
-          </div>
-
-          <div
-            id="taskList"
-            class="task-list"
-          ></div>
-
-        </section>
-
-
-        <!-- REFERRALS -->
-        <section
-          class="page"
-          id="referrals"
-        >
-
-          <div class="page-intro">
-
-            <span class="pill">
-              REFERRAL SIMULATOR
-            </span>
-
-            <h2>
-              Invite fictional users
-            </h2>
-
-            <p>
-              No messages are sent and no real referral program exists.
-            </p>
-
-          </div>
-
-
-          <div class="referral-layout">
-
-            <article class="panel referral-panel">
-
-              <div class="referral-icon">
-                ↗
-              </div>
-
-              <h3>
-                Your demo referral link
-              </h3>
-
-              <div class="copy-box">
-
-                <code id="referralLink">
-                  https://demo.earnly.local/ref/SF-DEMO
-                </code>
-
-                <button
-                  class="secondary-btn"
-                  id="copyReferral"
-                >
-                  Copy
-                </button>
-
-              </div>
-
-              <button
-                class="primary-btn"
-                id="simulateReferral"
-              >
-                + Simulate Referral
-              </button>
-
-              <p class="helper">
-                The button only changes local demo statistics.
-              </p>
-
-            </article>
-
-
-            <article class="panel">
-
-              <span class="section-label">
-                NETWORK
-              </span>
-
-              <h3>
-                Demo referral activity
-              </h3>
-
-              <div
-                id="referralList"
-                class="activity-list"
-              ></div>
-
-            </article>
-
-          </div>
-
-        </section>
-
-
-        <!-- TRANSACTIONS -->
-        <section
-          class="page"
-          id="transactions"
-        >
-
-          <div class="page-intro">
-
-            <span class="pill">
-              LEDGER
-            </span>
-
-            <h2>
-              Demo transactions
-            </h2>
-
-            <p>
-              Every record is fictional and remains inside local browser storage.
-            </p>
-
-          </div>
-
-
-          <article class="panel">
-
-            <div class="table-wrap">
-
-              <table>
-
-                <thead>
-
-                  <tr>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Amount</th>
-                  </tr>
-
-                </thead>
-
-                <tbody id="transactionTable"></tbody>
-
-              </table>
-
-            </div>
-
           </article>
 
-        </section>
+          <article class="stat-card">
+            <span class="stat-icon">✓</span>
+            <div>
+              <small>Tasks Completed</small>
+              <strong id="tasksStat">0</strong>
+            </div>
+          </article>
 
+          <article class="stat-card">
+            <span class="stat-icon">👥</span>
+            <div>
+              <small>Referrals</small>
+              <strong id="referralsStat">0</strong>
+            </div>
+          </article>
 
-        <!-- WITHDRAW -->
-        <section
-          class="page"
-          id="withdraw"
-        >
+          <article class="stat-card">
+            <span class="stat-icon">🔥</span>
+            <div>
+              <small>Activity Streak</small>
+              <strong id="streakStat">0 days</strong>
+            </div>
+          </article>
 
-          <div class="page-intro">
+        </div>
 
-            <span class="pill">
-              DEMO ONLY
-            </span>
+        <!-- DASHBOARD GRID -->
+        <div class="content-grid">
 
-            <h2>
-              Withdrawal simulator
-            </h2>
+          <div class="panel">
+
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow">QUICK ACTIONS</span>
+                <h3>Continue your demo</h3>
+              </div>
+            </div>
+
+            <div class="quick-actions">
+
+              <button class="quick-action" data-page-link="tasks">
+                <span>✓</span>
+                <div>
+                  <strong>Complete Tasks</strong>
+                  <small>Earn simulated rewards</small>
+                </div>
+              </button>
+
+              <button class="quick-action" data-page-link="referrals">
+                <span>↗</span>
+                <div>
+                  <strong>Invite Friends</strong>
+                  <small>Simulate referral rewards</small>
+                </div>
+              </button>
+
+              <button class="quick-action" data-page-link="withdraw">
+                <span>↓</span>
+                <div>
+                  <strong>Demo Withdrawal</strong>
+                  <small>Test the withdrawal flow</small>
+                </div>
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="panel">
+
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow">ACTIVITY</span>
+                <h3>Recent activity</h3>
+              </div>
+            </div>
+
+            <div id="activityList" class="activity-list"></div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ================================
+           TASKS
+      ================================= -->
+      <section id="tasksPage" class="page">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">DEMO TASKS</span>
+            <h1>Complete fictional tasks</h1>
+            <p>
+              These tasks only modify your local demo balance.
+            </p>
+          </div>
+        </div>
+
+        <div id="tasksGrid" class="tasks-grid"></div>
+
+      </section>
+
+      <!-- ================================
+           REFERRALS
+      ================================= -->
+      <section id="referralsPage" class="page">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">REFERRAL PROGRAM</span>
+            <h1>Invite demo users</h1>
+            <p>
+              Test a referral workflow without sending real invitations.
+            </p>
+          </div>
+        </div>
+
+        <div class="referral-layout">
+
+          <div class="panel referral-card">
+
+            <div class="referral-icon">↗</div>
+
+            <h2>Demo referral link</h2>
 
             <p>
-              This form never sends money and intentionally does not request
-              payment credentials.
+              Share this fictional link during testing.
             </p>
 
+            <div class="referral-input">
+              <input
+                id="referralLink"
+                readonly
+                value="https://earnly.demo/ref/DEMO123"
+              >
+
+              <button id="copyReferral">
+                Copy
+              </button>
+            </div>
+
+            <button id="simulateReferral" class="primary-btn">
+              + Simulate Referral
+            </button>
+
           </div>
 
+          <div class="panel">
 
-          <div class="withdraw-layout">
-
-            <article class="panel">
-
-              <div class="balance-box">
-
-                <span>
-                  Available demo balance
-                </span>
-
-                <strong id="withdrawBalance">
-                  $0.00
-                </strong>
-
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow">DEMO REFERRALS</span>
+                <h3>Your referrals</h3>
               </div>
+            </div>
 
+            <div id="referralsList" class="referrals-list"></div>
 
-              <form id="withdrawForm">
+          </div>
 
-                <label for="amount">
-                  Demo withdrawal amount
-                </label>
+        </div>
 
-                <div class="input-wrap">
+      </section>
 
-                  <span>$</span>
+      <!-- ================================
+           TRANSACTIONS
+      ================================= -->
+      <section id="transactionsPage" class="page">
 
-                  <input
-                    id="amount"
-                    type="number"
-                    min="1"
-                    step="0.01"
-                    placeholder="10.00"
-                    required
-                  >
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">LEDGER</span>
+            <h1>Demo transactions</h1>
+            <p>
+              All entries are simulated browser-side transactions.
+            </p>
+          </div>
+        </div>
 
-                </div>
+        <div class="panel table-panel">
 
+          <div class="table-wrapper">
 
-                <label for="method">
-                  Demo method
-                </label>
+            <table>
 
-                <select id="method">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Type</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
 
-                  <option>
-                    Demo Wallet
-                  </option>
+              <tbody id="transactionsBody"></tbody>
 
-                  <option>
-                    Demo Bank
-                  </option>
+            </table>
 
-                  <option>
-                    Demo Mobile Money
-                  </option>
+          </div>
 
-                </select>
+        </div>
 
+      </section>
 
-                <button
-                  class="primary-btn full"
-                  type="submit"
+      <!-- ================================
+           WITHDRAW
+      ================================= -->
+      <section id="withdrawPage" class="page">
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">DEMO WALLET</span>
+            <h1>Simulate a withdrawal</h1>
+            <p>
+              This does not transfer real money.
+            </p>
+          </div>
+        </div>
+
+        <div class="withdraw-layout">
+
+          <div class="panel wallet-card">
+
+            <span>Available demo balance</span>
+            <strong id="withdrawBalance">$0.00</strong>
+
+            <div class="wallet-note">
+              DEMO / SIMULATION
+            </div>
+
+          </div>
+
+          <div class="panel withdraw-form-panel">
+
+            <h2>Withdrawal method</h2>
+
+            <div class="method-grid">
+
+              <label class="method-card">
+                <input
+                  type="radio"
+                  name="method"
+                  value="Demo Wallet"
+                  checked
                 >
-                  Simulate Withdrawal
-                </button>
+                <span>Demo Wallet</span>
+                <small>Fictional wallet</small>
+              </label>
 
-              </form>
+              <label class="method-card">
+                <input
+                  type="radio"
+                  name="method"
+                  value="Demo Bank"
+                >
+                <span>Demo Bank</span>
+                <small>No real bank connection</small>
+              </label>
 
-            </article>
+              <label class="method-card">
+                <input
+                  type="radio"
+                  name="method"
+                  value="Demo Mobile Money"
+                >
+                <span>Demo Mobile Money</span>
+                <small>No real mobile-money connection</small>
+              </label>
 
+            </div>
 
-            <article class="panel notice-panel">
-
-              <div class="notice-icon">
-                !
+            <label class="amount-label">
+              Simulated amount
+              <div class="amount-input">
+                <span>$</span>
+                <input
+                  id="withdrawAmount"
+                  type="number"
+                  min="1"
+                  step="0.01"
+                  placeholder="10.00"
+                >
               </div>
+            </label>
 
-              <h3>
-                Important
-              </h3>
+            <button id="withdrawBtn" class="primary-btn full-btn">
+              Simulate Withdrawal
+            </button>
 
+            <div class="security-notice">
+              <strong>⚠ Demo environment</strong>
               <p>
-                This is a UI/UX simulation. Never enter a real bank account,
-                mobile-money PIN, card number, password, or other sensitive
-                information here.
+                Never enter real banking information, card details,
+                mobile-money PINs, passwords, or financial credentials.
               </p>
-
-            </article>
+            </div>
 
           </div>
 
-        </section>
+        </div>
 
-      </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <span>Earnly Demo Platform</span>
+        <span>Fictional simulation — no real financial activity</span>
+      </footer>
 
     </main>
 
   </div>
 
+  <!-- ================================
+       WITHDRAWAL POPUP
+  ================================= -->
+  <div id="withdrawNotification" class="withdraw-notification">
 
-  <!-- TOAST -->
-  <div
-    class="toast"
-    id="toast"
-  ></div>
+    <div class="notification-avatar" id="notificationAvatar">
+      A
+    </div>
 
+    <div class="notification-content">
 
-  <!-- MODAL -->
-  <div
-    class="modal-backdrop"
-    id="modalBackdrop"
-  >
+      <div class="notification-title">
+        <span class="live-dot"></span>
+        Demo Activity
+      </div>
+
+      <p id="notificationText">
+        Aline M. simulated a withdrawal of $18.50.
+      </p>
+
+      <small id="notificationTime">
+        Just now
+      </small>
+
+    </div>
+
+    <button id="closeNotification" class="notification-close">
+      ×
+    </button>
+
+  </div>
+
+  <!-- ================================
+       TOAST
+  ================================= -->
+  <div id="toast" class="toast">
+    <span id="toastIcon">✓</span>
+    <span id="toastMessage">Done</span>
+  </div>
+
+  <!-- ================================
+       RESET MODAL
+  ================================= -->
+  <div id="modalOverlay" class="modal-overlay">
 
     <div class="modal">
 
-      <button
-        class="modal-close"
-        id="modalClose"
-      >
+      <button id="closeModal" class="modal-close">
         ×
       </button>
 
-      <div class="modal-icon">
-        ✓
-      </div>
+      <div class="modal-icon">!</div>
 
-      <h3 id="modalTitle">
-        Demo action
-      </h3>
+      <h2>Reset demo?</h2>
 
-      <p id="modalText">
-        This is a simulation.
+      <p>
+        This will remove your locally stored demo activity
+        and restore the default demo state.
       </p>
 
-      <button
-        class="primary-btn full"
-        id="modalOk"
-      >
-        Continue
-      </button>
+      <div class="modal-actions">
+        <button id="cancelModal" class="secondary-btn">
+          Cancel
+        </button>
+
+        <button id="confirmReset" class="danger-btn">
+          Reset Demo
+        </button>
+      </div>
 
     </div>
 
   </div>
-
 
   <script src="script.js"></script>
 
